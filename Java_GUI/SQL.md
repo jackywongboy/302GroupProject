@@ -1,4 +1,4 @@
-# 304 Group Project DataBase SQL record Note
+# 302 Group Project DataBase SQL record Note
 
 ## Coffee Shop Database (All coffee shop database will have CE_ in front of the table name)
 
