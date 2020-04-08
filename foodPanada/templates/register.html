@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block home %}
+<div style="width:90%; margin:auto;">
+    <br>
+    <a href="/" class="btn" id="back">Back</a>
+
+
+    <h3 style="text-align:center;">Log In </h3>
+    <form action="/orderfood" method="POST"  onsubmit="return validation()" name="SignUp">
+    <div id="login">
+        <input type="text" name="UserID" placeholder="User ID">
+        <input type="password" name="pwd" placeholder="Password">
+        <button type="submit" id="submitting">Submit</button>
+    </div>
+    </form>
+    <hr>
+
+    <h3 style="text-align:center;">Register </h3>
+
+
+
+
+    <div id="login">
+        <form action="/success" method="POST"  onsubmit="return validation()" name="SignUp">
+            <input type="text" name="UserName" placeholder="Name" required><br>
+                <div id="gender">
+                    Gender:
+                    <input type="radio" name="gender" value="M"><label>Male</label>
+                    <input type="radio" name="gender" value="F"><label>Female</label><br>
+                </div>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <input type="number" name="phone" placeholder="Phone Number" required><br>
+                <input type="text" name="address" placeholder="Address"><br>
+                <input type="password" name="pwd" placeholder="Password" required><br>
+                <input type="password" name="confirmPwd" placeholder="Retype Password" required><br>
+                <button type="Submit">Submit</button>
+
+        </form>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+       function validation(){
+        var Name = document.forms["SignUp"]["UserName"].value
+        var Phone = document.forms["SignUp"]["phone"].value
+        var Password = document.forms["SignUp"]["pwd"].value
+        var RetypePwd = document.forms["SignUp"]["confirmPwd"].value
+
+        if (Name.length < 3 ) {
+          alert("The length of name must longer than 2");
+          return false;
+        }
+
+        else if (Phone.length < 8 ) {
+          alert("Invalid phone number");
+          return false;
+        }
+
+        else if (Password !== RetypePwd ) {
+          alert("Password is not the same as the retyped one");
+          return false;
+        }
+
+       }
+</script>
+
+<style>
+    #back{
+        color:rgb(204, 0, 82, 80%);
+        background-color:#d9d9d9;
+        margin-bottom:5%;
+    }
+
+    #login{
+        text-align:center;
+        margin:5%;
+    }
+
+
+    input[type=email],
+    input[type=password],
+    input[type=text],
+    input[type=number]{
+        width:70%;
+        padding:2%;
+    }
+
+    #continue{
+        width:30%;
+        margin:3%;
+        background-color:rgb(204, 0, 82, 70%);
+        color:white;
+    }
+
+    #submitting{
+        width:30%;
+        margin:3%;
+        background-color:#2eb82e;
+        color:white;
+    }
+
+</style>
+
+
+
+{% endblock %}

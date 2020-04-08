@@ -1,0 +1,58 @@
+{% extends 'base2.html' %}
+
+{% block account %}
+
+<div class="start_container">
+    <h6 style="padding-top: 5px;"> Selected Shop : <br> {{ result2[0] }}</h6>
+    <h6> Address : <br> {{ result2[1] }}</h6>
+    <h6> Phone Number : <br> {{ result2[2] }}</h6>
+
+    <form action="/confirmed" method="POST"  onsubmit="return validation()" name="Change">
+        <table>
+            <tr>
+                <td>Customer ID:</td>
+                <td>{{result[0]}}</td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" value="{{result[1]}}" name="username"></td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td><input type="text" value="{{result[2]}}" name="address"></td>
+            </tr>
+
+            <tr>
+                <td>Credit Card:</td>
+                <td>
+                    <select required>
+                        <option selected>Visa</option>
+                        <option>Master</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Card Number:</td>
+                <td><input type="number" name="cn" required></td>
+            </tr>
+            <tr>
+                <td>Owner Name</td>
+                <td><input type="yext" name="on"  required></td>
+            </tr>
+            <tr>
+                <td>Expire Date:</td>
+                <td><input type="text" name="ed" value="mm/yyyy" required></td>
+            </tr>
+            <tr>
+                <td>Save Code:</td>
+                <td><input type="number" name="sc" ></td>
+            </tr>
+        </table>
+        
+        <button type="submit" id="go">Confirm and Order Now</button>
+        </form>
+
+</div>
+
+{% endblock %}

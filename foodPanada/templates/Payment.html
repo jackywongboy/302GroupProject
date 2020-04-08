@@ -1,0 +1,27 @@
+<{% extends 'base2.html' %}
+{% block account %}
+
+<div style="width:90%; margin:auto;">
+
+<h3>Payment Method</h3>
+<input type="radio" name="method" value="Master Card" style="margin-left:5%; margin-right:2%;">Master Card<br>
+<input type="radio" name="method" value="Visa Card" style="margin-left:5%; margin-right:2%;">Visa Card<br>
+Card Number:<input type="number" name="card" placeholder="0000-0000-0000"><br>
+Valid date: <input type="number" name="validmonth" placeholder="MM" style="width:15%; margin-left:5%;">/
+            <input type="number" name="validyear" placeholder="YYYY"  style="width:15%;"><br>
+Secure Code:<input type="number" name="code" placeholder="000"  style="width:20%; margin-left:5%;"><br>
+
+<hr>
+<h3>Delivery Method:</h3>
+<input type="radio" name="method" value="pickup" style="margin-bottom:5%; margin-right:2%;">Pick up at shop:
+<select style="margin-bottom:5%; margin-left:5%;">
+    {% for i in range(noshop) %}
+    <option name="shopid" value="{{shop[i][0]}}">{{shop[i][1]}}</option>
+    {% endfor %}
+</select><br>
+
+<input type="radio" name="method" value="deliver"style="margin-bottom:5%; margin-right:2%;">Deliver to my location<br>
+<button type="submit">Submit</button>
+
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block home %}
+
+<div style="width:90%; margin:auto;">
+<div class="container mt-3">
+    <br>
+  <input class="form-control" id="myInput" type="text" placeholder="Example: Drinks, bread, place..">
+  <br>
+
+    <div id="myTable">
+        {% for i in range(noshop) %}
+        <form action="detail" method="post">
+        <button class="card" type="submit">
+            <input type="hidden" name="shopid" value="{{shop[i][0]}}">
+            <img src="{{url_for('static', filename = '%s'%shop[i][3])}}" class="rounded" alt="{{shop[i][1]}}" width="100%"><br>
+            {{shop[i][1]}}<br>
+            $, Coffee, Tea, Salad...<br>
+            HK$ 40 minimum  |  HK$ 20 deliver fee
+        </button>
+        </form>
+        {% endfor %}
+    </div>
+
+
+  <p>No restaurant available!</p>
+</div>
+
+<style>
+    .card{
+        padding:3%;
+    }
+
+    button{
+        width:100%;
+        margin-bottom:4%;
+        text-align:left;
+    }
+
+</style>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable button").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
+</div>
+{% endblock %}

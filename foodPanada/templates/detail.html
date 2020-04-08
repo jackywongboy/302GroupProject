@@ -1,0 +1,430 @@
+{% extends 'base2.html' %}
+{% block account %}
+<div class="row">
+<div id="name" class="co-12 col-sm-5 col-lg-3">
+    <a class="btn" id='back' onclick="back()">Back</a>
+
+    <a class="btn" data-toggle="modal" data-target="#cart" style="float:right; width:20%; background-color:#d9d9d9;">
+        <i class="fa fa-shopping-cart"style="margin-right:5%;"></i>Cart
+    </a><br>
+
+
+    <!-------------------- Shopping Cart-------------------------------------->
+    <div class="modal fade" id="cart" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" style="width:100%;">Shopping Cart</h2>
+            <button type="button" class="close" data-dismiss="modal" style="width:10%;">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <form action="#" method="POST">
+                <div id="shopping-cart">
+                    <table name="shop-details" id="cartadd" style="width:100%; margin-bottom:10%;">
+                        <thead>
+                        <tr style="border-bottom: 1px solid blue;">
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Special</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <a href="#" id="confirm-cart" class="btn" style="background-color:#b3f6ff; width:100%;">Confirm</a>
+                    <p> </p>
+                    <a href="#" id="clear-cart" class="btn" style="background-color:#ffc2b3; width:100%;">Clear Cart</a>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <h3>{{result2[1]}}</h3>
+</div>
+
+<!---------------------------------Menu----------------------------->
+<div id="menu" class="col-12 col-sm-7 col-lg-9">
+
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#coffee">Coffee</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ice">Ice Drink</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#salad">Salad</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#sandwich">Sandwich</a>
+    </li>
+  </ul>
+
+<div id="categorise">
+    <h4 id="food">Coffee</h4>
+<div class="row">
+    {% for i in range(Number) %}
+    {% if result[i][2] =='ce'%}
+        <div class="col-6 col-lg-3">
+            <div class="card" style="width:100%; margin-bottom:5%; height:475px;">
+                <img class="card-img-top" src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" style=" opacity:100%;">
+                <div class="card-body">
+                    <h4>{{result[i][1]}}</h4>
+                    HK$<p class="price"><span class="u-pull-right ">{{result[i][3]}}</span></p>
+                    <a href="#" class="btn add-to-cart" data-id="result[i][0]" style="background-color:#e6e6e6; bottom:5%; position:absolute;">Add to Cart</a>
+                    <input type="hidden" value="{{ result[i][0] }}">
+                </div>
+            </div>
+        </div>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+</div>
+
+<h4 id="ice">Ice Drink</h4>
+<div class="row">
+{% for i in range(Number) %}
+{% if result[i][2] =='ie'%}
+    <div class="col-6 col-lg-3">
+        <div class="card" style="width:100%; margin-bottom:5%; height:475px;">
+            <img class="card-img-top" src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" style=" opacity:100%;">
+            <div class="card-body">
+                <h4>{{result[i][1]}}</h4>
+                HK$<p class="price"><span class="u-pull-right ">{{result[i][3]}}</span></p>
+                <a href="#" class="btn add-to-cart" data-id="result[i][0]" style="background-color:#e6e6e6; bottom:5%; position:absolute;">Add to Cart</a>
+                <input type="hidden" value="{{ result[i][0] }}">
+            </div>
+        </div>
+    </div>
+{% else %}
+{% endif %}
+{% endfor %}
+</div>
+
+<h4 id="salad">Salad</h4>
+<div class="row">
+{% for i in range(Number) %}
+{% if result[i][2] =='sd'%}
+    <div class="col-6 col-lg-3">
+        <div class="card" style="width:100%; margin-bottom:5%; height:475px;">
+            <img class="card-img-top" src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" style=" opacity:100%;">
+            <div class="card-body">
+                <h4>{{result[i][1]}}</h4>
+                HK$<p class="price"><span class="u-pull-right ">{{result[i][3]}}</span></p>
+                <a href="#" class="btn add-to-cart" data-id="result[i][0]" style="background-color:#e6e6e6; bottom:5%; position:absolute;">Add to Cart</a>
+                <input type="hidden" value="{{ result[i][0] }}">
+            </div>
+        </div>
+    </div>
+{% else %}
+{% endif %}
+{% endfor %}
+</div>
+
+<h4 id="sandwich">Sandwich</h4>
+<div class="row">
+{% for i in range(Number) %}
+{% if result[i][2] =='sh'%}
+    <div class="col-6 col-lg-3">
+        <div class="card" style="width:100%; margin-bottom:5%; height:650px;">
+            <img class="card-img-top" src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" style=" opacity:100%;">
+            <div class="card-body">
+                <h4>{{result[i][1]}}</h4>
+                HK$<p class="price"><span class="u-pull-right ">{{result[i][3]}}</span></p>
+                <a href="#" class="btn add-to-cart" data-id="result[i][0]" style="background-color:#e6e6e6; bottom:5%; position:absolute;">Add to Cart</a>
+                <input type="hidden" value="{{ result[i][0] }}">
+            </div>
+        </div>
+    </div>
+{% else %}
+{% endif %}
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+<style>
+    body{
+        background-color: #f2f2f2;
+    }
+
+    #name{
+        position: relative;
+        color:black;
+        height:270px;
+    }
+
+    h3{
+        text-align:center;
+        margin-top:17%;
+    }
+
+    #categorise{
+        margin: auto;
+        margin-top:5%;
+        width:90%;
+    }
+
+    #back{
+        color:rgb(204, 0, 82, 80%);
+        background-color:#d9d9d9;
+        margin-bottom:5%;
+        margin-top:1%;
+        margin-left:1%;
+        width:auto;
+    }
+
+    button{
+        width:100%;
+        background-color:white;
+        text-align:left;
+    }
+
+    #coffee, #ice, #salad, #sandwich{
+        margin-top:10%;
+    }
+
+    h5{
+        padding:2%;
+        font-size:90%;
+    }
+
+
+    #name:after {
+        content : "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url("{{url_for('static', filename = '%s'%result2[3])}}");
+        background-size:100% 100%;
+        width: 100%;
+        height: 100%;
+        opacity : 0.7;
+        z-index: -1;
+    }
+
+    img{
+        opacity:40%;
+    }
+
+    td{
+        width:15%;
+        font-size: 90%;
+    }
+
+</style>
+
+<script>
+
+const allFood = document.querySelector('#menu'),
+shoppingCart = document.querySelector('#cartadd tbody'),
+clearCartBtn = document.querySelector('#clear-cart');
+confirmBtn = document.querySelector('#confirm-cart');
+
+loadEventListeners();
+
+function loadEventListeners(){
+
+    allFood.addEventListener('click', buyFood);
+
+    shoppingCart.addEventListener('click', removeFood);
+    clearCartBtn.addEventListener('click', clearCart);
+    confirmBtn.addEventListener('click', confirm);
+
+
+    function buyFood(e){
+        if(e.target.classList.contains('add-to-cart')){
+        const food = e.target.parentElement.parentElement;
+            FoodInfo(food);
+        }
+    }
+}
+
+function FoodInfo(food) {
+    const courseInfo = {
+        image: food.querySelector('img').src,
+        name: food.querySelector('h4').textContent,
+        price: food.querySelector('.price span').textContent,
+        id: food.querySelector('a').getAttribute('data-id'),
+        id2: food.querySelector('input').getAttribute('value')
+    }
+    addToCart(courseInfo);
+}
+
+function addToCart(food){
+    const row = document.createElement('tr');
+
+    var d = new Date();
+    var timenow = d.toLocaleString();
+
+    console.log(food.cat);
+
+    row.innerHTML = `
+<tr>
+    <td>
+        <img name="${timenow}" src="${food.image}" width="70" style=" opacity:100%;" id="ftime">
+    </td>
+
+    <td>
+        <p id="${food.id2}">${food.name}</p>
+    </td>
+
+    <td>
+        <select style='width:100%;' id="fsize">
+            <option value="r" name="size">Regular</option>
+            <option value="1" name="size">Grande</option>
+            <option value="2" name="size">Alto</option>
+        </select>
+    </td>
+
+    <td>
+        HK$<p id="${food.price}">${food.price}</p>
+    </td>
+
+    <td>
+        <select style='width:100%;' id="fsr">
+            <option value="na" name="special">None</option>
+            <option value="4" name="special">Extra Ice</option>
+            <option value="3" name="special">Less Ice</option>
+            <option value="7" name="special">Add Plastic Bag</option>
+        </select>
+    </td>
+    <td>
+        <a href="#" class="remove" data-id="${food.id}">X</a>
+    </td>
+    
+</tr>
+`
+    ;
+
+    shoppingCart.appendChild(row);
+}
+
+function removeFood(e){
+    if(e.target.classList.contains('remove')){
+         e.target.parentElement.parentElement.remove();
+    }
+}
+
+function clearCart(){
+    while(shoppingCart.firstChild){
+        shoppingCart.removeChild(shoppingCart.firstChild);
+    }
+}
+
+function getSelectedOption(sel) {
+    var opt;
+    for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+            break;
+        }
+    }
+    return opt;
+}
+
+function confirm(){
+    var table = document.getElementById('cartadd');
+
+    var jjson = "";
+    var flag = 0;
+
+    for (var r = 0, n = table.rows.length; r < n; r++) {
+        if(r!=0){
+            
+            if(flag==0){
+                var scft = (table.rows[r].cells[0].getElementsByTagName("img")[0].name);
+                var scfid = (table.rows[r].cells[1].getElementsByTagName("p")[0].id);
+                var scfs = (table.rows[r].cells[2].getElementsByTagName("select")[0].value);
+                var scfsr = (table.rows[r].cells[4].getElementsByTagName("select")[0].value);
+
+                var sid = "";
+
+                if (scfs!="r") {
+                    sid = scfs;
+                }
+
+                if (scfsr != "na"){
+                    if (sid.length!=0){
+                        sid = sid+"_"+scfsr;
+                    }else{
+                        sid = scfsr;
+                    }
+                }
+
+                if (sid.length==0){
+                    sid="na";
+                }
+
+                var logg = "'"+scft+"':{'type':'f', 'fid':'"+scfid+"', 'sid':'"+sid+"'}";
+
+                console.log(logg);
+
+                flag = flag+1;
+
+                jjson = jjson + logg;
+
+            }else{
+
+                var scft = (table.rows[r].cells[0].getElementsByTagName("img")[0].name);
+                var scfid = (table.rows[r].cells[1].getElementsByTagName("p")[0].id);
+                var scfs = (table.rows[r].cells[2].getElementsByTagName("select")[0].value);
+                var scfsr = (table.rows[r].cells[4].getElementsByTagName("select")[0].value);
+
+                var sid = "";
+
+                if (scfs!="r") {
+                    sid = scfs;
+                }
+
+                if (scfsr != "na"){
+                    if (sid.length!=0){
+                        sid = sid+"_"+scfsr;
+                    }else{
+                        sid = scfsr;
+                    }
+                }
+
+                if (sid.length==0){
+                    sid="na";
+                }
+
+                var logg2 = "'"+scft+"':{'type':'f', 'fid':'"+scfid+"', 'sid':'"+sid+"'}";
+
+                console.log(logg2);
+
+                jjson = jjson +","+ logg2;
+            }
+        }
+    }
+
+    console.log(jjson);
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        url: "/qwe",
+        traditional: "true",
+        data: JSON.stringify({jjson}),
+        dataType: "json"
+    });
+
+    window.location.replace("http://127.0.0.1:5000/confirm");
+}
+
+</script>
+
+<script>
+    function back(){
+        window.history.back();
+    }
+</script>
+
+{% endblock %}

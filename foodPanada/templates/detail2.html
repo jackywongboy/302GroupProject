@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block home %}
+<div class="row">
+
+<div id="name" class="co-12 col-sm-5 col-lg-3">
+    <a class="btn" id='back' onclick="back()">Back</a><br>
+    <h3>{{result2[1]}}</h3>
+</div>
+
+<div id="menu" class="col-12 col-sm-7 col-lg-9">
+
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#coffee">Coffee</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#ice">Ice Drink</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#salad">Salad</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="#sandwich">Sandwich</a>
+    </li>
+  </ul>
+
+<div id="categorise">
+    <h3 style="margin-bottom:10%;">Please login / register to order food</h3>
+
+        <h4 id="food">Coffee</h4>
+    <div class="row">
+    {% for i in range(Number) %}
+    {% if result[i][2] =='ce'%}
+        <button disabled class="col-12 col-lg-4">
+            <h5>
+                <b>{{result[i][1]}}</b><br>
+                <i>HK${{result[i][3]}}</i><img src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" width="10%" style="margin-left:65%; opacity:100%;">
+            </h5>
+        </button>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+<div id="categorise">
+
+        <h4 id="ice">Ice Drink</h4>
+    <div class="row">
+    {% for i in range(Number) %}
+    {% if result[i][2] =='ie'%}
+        <button disabled class="col-12 col-lg-4">
+            <h5>
+                <b>{{result[i][1]}}</b><br>
+                <i>HK${{result[i][3]}}</i><img src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" width="10%" style="margin-left:65%; opacity:100%;">
+            </h5>
+        </button>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+<div id="categorise">
+
+        <h4 id="salad">Salad</h4>
+    <div class="row">
+    {% for i in range(Number) %}
+    {% if result[i][2] =='sd'%}
+        <button disabled class="col-12 col-lg-4">
+            <h5>
+                <b>{{result[i][1]}}</b><br>
+                <i>HK${{result[i][3]}}</i><img src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" width="10%" style="margin-left:65%; opacity:100%;">
+            </h5>
+        </button>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    </div>
+</div>
+
+<div id="categorise">
+
+        <h4 id="sandwich">Sandwich</h4>
+    <div class="row">
+    {% for i in range(Number) %}
+    {% if result[i][2] =='sh'%}
+        <button disabled class="col-12 col-lg-4">
+            <h5>
+                <b>{{result[i][1]}}</b><br>
+                <i>HK${{result[i][3]}}</i><img src="{{url_for('static', filename = '%s'%result[i][4])}}" class="rounded" alt="{{result[i][1]}}" width="10%" style="margin-left:65%; opacity:100%;">
+            </h5>
+        </button>
+    {% else %}
+    {% endif %}
+    {% endfor %}
+    </div>
+    </div>
+</div>
+
+
+
+<style>
+    body{
+        background-color: #f2f2f2;
+    }
+
+    #name{
+        position: relative;
+        color:black;
+        height:270px;
+    }
+
+    h3{
+        text-align:center;
+        margin-top:10%;
+    }
+
+    #categorise{
+        margin: auto;
+        margin-top:5%;
+        width:90%;
+    }
+
+    #back{
+        color:rgb(204, 0, 82, 80%);
+        background-color:#d9d9d9;
+        margin-bottom:5%;
+        margin-top:1%;
+        margin-left:1%;
+        width:auto;
+    }
+
+    button{
+        width:100%;
+        background-color:white;
+        text-align:left;
+    }
+
+    h5{
+        padding:2%;
+        font-size:90%;
+    }
+
+
+    #name:after {
+        content : "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url("{{url_for('static', filename = '%s'%result2[3])}}");
+        background-size:100% 100%;
+        width: 100%;
+        height: 100%;
+        opacity : 0.7;
+        z-index: -1;
+    }
+
+    img{
+        opacity:40%;
+    }
+</style>
+
+<script>
+    function back(){
+        window.history.back();
+    }
+</script>
+{% endblock %}

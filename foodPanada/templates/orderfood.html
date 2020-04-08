@@ -1,0 +1,69 @@
+{% extends 'base2.html' %}
+{% block account %}
+
+<div style="width:90%; margin:auto;">
+<div class="container mt-3">
+    <br>
+    <h3>Hello, {{result[1]}}! </h3>
+
+  <input class="form-control" id="myInput" type="text" placeholder="Example: Drinks, bread, place..">
+  <br>
+    <h5>Delivery address:<a class="btn" id="change" href="/changeinfor">Change</a></h5>
+    <p>{{result[3]}}</p>
+    <div id="myTable" class="row">
+        {% for i in range(noshop) %}
+        <div class="col-12 col-sm-6 col-lg-4">
+        <form action="detail" method="post">
+        <button class="card" onclick="detail()" type="submit">
+            <input type="hidden" name="shopid" value="{{shop[i][0]}}">
+            <img src="{{url_for('static', filename = '%s'%shop[i][3])}}" class="rounded" alt="{{shop[i][1]}}" width="100%"><br>
+            {{shop[i][1]}}<br>
+            $, Coffee, Tea, Salad...<br>
+            HK$ 40 minimum  |  HK$ 20 deliver fee
+        </button>
+        </form>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .card{
+        padding:3%;
+    }
+
+    button{
+        width:100%;
+        margin-bottom:4%;
+        text-align:left;
+    }
+
+    #change{
+        background-color:#ffcc99;
+        float:right;
+        margin-top:3%;
+        margin-bottom:1%;
+    }
+
+</style>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable button").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
+<script>
+    function detail(){
+    window.location.href="detail";
+    }
+</script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+.start_container {
+    background-color: rgba(255, 255, 255, 0.904);
+    text-align: center;
+    width: 80%;
+    height: 600px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 24px 28px 0 rgba(0, 0, 0, 0.4), 0 26px 40px 0 rgba(0, 0, 0, 0.4);
+}
